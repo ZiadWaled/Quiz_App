@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qizz_app/home_page.dart';
+import 'package:qizz_app/core/utils/app_router.dart';
 
 void main() {
   runApp( MyApp());
@@ -8,9 +8,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
     );
   }
 }

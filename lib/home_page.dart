@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:qizz_app/core/utils/app_router.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Colors.black,
       body: SizedBox(
         width: double.infinity,
         height: MediaQuery.of(context).size.height,
         child: Stack(
+
           alignment: Alignment.bottomCenter,
             children: [
-              Image.asset(
-                'assets/images/home.jpg',
+              Container(
+                height:MediaQuery.of(context).size.height,
+                width: double.infinity,
+                child: Image.asset(
+
+                  'assets/images/home.jpg',
+                  fit: BoxFit.cover,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(40.0),
@@ -20,15 +28,19 @@ class MyHomePage extends StatelessWidget {
                   width: double.infinity,
                   color: Colors.green,
                   child: GestureDetector(
-                    onTap: (){},
+                    onTap: (){
+                      GoRouter.of(context).push(AppRouter.kLoginScreen);
+                    },
                     child: const Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text('Start',
+                      child: Text(
+                        'Start',
                           textAlign: TextAlign.center,
                         style: TextStyle(
                         fontSize: 20,
                         color: Colors.white
-                      ),),
+                      ),
+                      ),
                     ),
                   ),
                 ),
