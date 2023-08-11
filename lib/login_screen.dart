@@ -15,9 +15,13 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height/2.8,
+              height: MediaQuery.of(context).size.height/4,
               width:double.infinity,
-              child: Image.asset('assets/images/images.jpg')
+              child: Image.asset(
+                  'assets/images/My project-1 (2).png',
+                height: 100,
+                width: 100,
+              )
             ),
             Container(
               decoration:
@@ -35,130 +39,158 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   children: [
 
-                    const Text(
-                      'Login',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 35,
-                          color: Colors.black,
-                        fontWeight: FontWeight.bold
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height/15,
+
+                      child: const Text(
+                        'Login',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 35,
+                            color: Colors.black,
+                          fontWeight: FontWeight.bold
+                        ),
                       ),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    TextFormField(
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height/12,
 
-                    keyboardType: TextInputType.emailAddress,
-                    decoration:  InputDecoration(
-                      prefixIcon: const Icon(FontAwesomeIcons.user),
-                      labelText: 'Email Address',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40.0),
-                      ),
-                    ),
+                      child: TextFormField(
 
-                ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-
-                      keyboardType: TextInputType.visiblePassword,
+                      keyboardType: TextInputType.emailAddress,
                       decoration:  InputDecoration(
-                        prefixIcon: const Icon(FontAwesomeIcons.lock),
-                        suffixIcon: const Icon(FontAwesomeIcons.eyeSlash),
+                        prefixIcon: const Icon(FontAwesomeIcons.user),
                         labelText: 'Email Address',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(40.0),
                         ),
                       ),
 
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        const Text("New to quizz app? ",
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.w500,
-                            )
-                        ),
-
-
-                        TextButton(onPressed: (){},
-                            child: const Text(
-                              'Register',
-                              style: TextStyle(
-                                color: Colors.green
-                              ),
-                            )
-                        )
-                      ],
-                    ),
-                   const SizedBox(
-                     height: 10,
-                   ),
-                   ElevatedButton(
-                      onPressed: () {
-
-                      },
-                      style: ElevatedButton.styleFrom(
-                        elevation: 10, // تعيين الـ elevation إلى 20 هنا
-                        primary: Colors.green, // لون الخلفية
-                        onPrimary: Colors.white, // لون النص
-                        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(35),
-                        ),
-                      ),
-                      child: Text(' Login'),
-                    ),
-                     const SizedBox(
-                      height: 15,
-                    ),
-                    Image.asset(
-                      'assets/images/download.png',
-                      width: 70, // العرض الذي تريده للصورة
-                      height: 70, // الارتفاع الذي تريده للصورة
-                      fit: BoxFit.cover, // كيفية توسيع أو تصغير الصورة داخل المساحة المحددة
+                ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
-                      'Use Touch ID',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height/12,
+                      child: TextFormField(
+
+                        keyboardType: TextInputType.visiblePassword,
+                        decoration:  InputDecoration(
+                          prefixIcon: const Icon(FontAwesomeIcons.lock),
+                          suffixIcon: const Icon(FontAwesomeIcons.eyeSlash),
+                          labelText: 'Password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(40.0),
+                          ),
+                        ),
+
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Checkbox(
-                          activeColor: Colors.green,
-                          checkColor: Colors.white,
-                          value: isChecked, onChanged: (bool? value) {  },
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height/20,
+                      child: Row(
 
-                        ),
-                        const Text('Remember me',
-                        ),
-                        Spacer(),
-                        TextButton(onPressed: (){},
-                            child: const Text(
-                              'Forget Password?',
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text("New to quizz app? ",
                               style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500,
+                              )
+                          ),
+
+
+                          TextButton(onPressed: (){},
+                              child: const Text(
+                                'Register',
+                                style: TextStyle(
                                   color: Colors.green
-                              ),
-                            )
+                                ),
+                              )
+                          )
+                        ],
+                      ),
+                    ),
+                   const SizedBox(
+                     height: 10,
+                   ),
+                   Container(
+                     height: MediaQuery.of(context).size.height/20,
+                     child: ElevatedButton(
+                        onPressed: () {
+
+                        },
+                        style: ElevatedButton.styleFrom(
+                          elevation: 10, // تعيين الـ elevation إلى 20 هنا
+                          primary: Colors.green, // لون الخلفية
+                          onPrimary: Colors.white, // لون النص
+                          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(35),
+                          ),
                         ),
-                      ],
+                        child: Text(' Login'),
+                      ),
+                   ),
+                     const SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height/5,
+
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/touch.png',
+                            width: 180, // العرض الذي تريده للصورة
+                            height: 70, // الارتفاع الذي تريده للصورة
+                            fit: BoxFit.cover, // كيفية توسيع أو تصغير الصورة داخل المساحة المحددة
+                          ),
+
+                          const Text(
+                            'Use Touch ID',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height/20,
+
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Checkbox(
+                            activeColor: Colors.green,
+                            checkColor: Colors.white,
+                            value: isChecked, onChanged: (bool? value) {  },
+
+                          ),
+                          const Text('Remember me',
+                          ),
+                          Spacer(),
+                          TextButton(onPressed: (){},
+                              child: const Text(
+                                'Forget Password?',
+                                style: TextStyle(
+                                    color: Colors.green
+                                ),
+                              )
+                          ),
+                        ],
+                      ),
                     ),
 
                   ],
