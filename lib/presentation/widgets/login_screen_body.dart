@@ -1,9 +1,9 @@
 import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:qizz_app/custom_text_form_field.dart';
 
-class LoginScreen extends StatelessWidget {
-   LoginScreen({super.key});
+// ignore: must_be_immutable
+class LoginScreenBody extends StatelessWidget {
+   LoginScreenBody({super.key});
   bool isChecked = true;
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget {
                     topStart:Radius.circular(50),
                     topEnd:Radius.circular(50),
                   ),
-                color: Colors.grey[200],
+                color: Colors.grey[350],
               ),
 
               width: double.infinity,
@@ -59,9 +59,9 @@ class LoginScreen extends StatelessWidget {
                       height: MediaQuery.of(context).size.height/12,
 
                       child: TextFormField(
-
                       keyboardType: TextInputType.emailAddress,
                       decoration:  InputDecoration(
+
                         prefixIcon: const Icon(FontAwesomeIcons.user),
                         labelText: 'Email Address',
                         border: OutlineInputBorder(
@@ -94,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                       height: 20,
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height/20,
+                      height: MediaQuery.of(context).size.height/15,
                       child: Row(
 
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -121,29 +121,29 @@ class LoginScreen extends StatelessWidget {
                    const SizedBox(
                      height: 10,
                    ),
-                   Container(
-                     height: MediaQuery.of(context).size.height/20,
+                   SizedBox(
+                     height: MediaQuery.of(context).size.height/18,
                      child: ElevatedButton(
                         onPressed: () {
 
                         },
                         style: ElevatedButton.styleFrom(
-                          elevation: 10, // تعيين الـ elevation إلى 20 هنا
-                          primary: Colors.green, // لون الخلفية
-                          onPrimary: Colors.white, // لون النص
-                          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+                          foregroundColor: Colors.white,
+                          elevation: 10,
+                          backgroundColor: Colors.green,
+                          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(35),
                           ),
                         ),
-                        child: Text(' Login'),
+                        child: const Text(' Login'),
                       ),
                    ),
                      const SizedBox(
                       height: 15,
                     ),
                     SizedBox(
-                      height: MediaQuery.of(context).size.height/5,
+                      height: MediaQuery.of(context).size.height/6,
 
                       child: Column(
                         children: [
@@ -166,7 +166,7 @@ class LoginScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       height: MediaQuery.of(context).size.height/20,
 
                       child: Row(
@@ -180,7 +180,7 @@ class LoginScreen extends StatelessWidget {
                           ),
                           const Text('Remember me',
                           ),
-                          Spacer(),
+                          const Spacer(),
                           TextButton(onPressed: (){},
                               child: const Text(
                                 'Forget Password?',

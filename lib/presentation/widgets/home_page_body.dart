@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qizz_app/core/utils/app_router.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePageBody extends StatelessWidget {
+  const MyHomePageBody({super.key});
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(

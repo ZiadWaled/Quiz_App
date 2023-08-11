@@ -34,19 +34,5 @@ class  CustomTextFormField extends StatelessWidget {
     );
   }
 }
-  // } Padding(
-  //  padding: const EdgeInsets.all(20.0),
-  //  child: SizedBox(
-  //  width: MediaQuery.of(context).size.width/1.5,
-  //  child: TextFormField(
-  //  decoration: InputDecoration(
-  //  labelText:text,
-  //  border: OutlineInputBorder(
-  //  borderRadius: BorderRadius.circular(50),
-  //  ),
-  //  prefix: const Icon(Icons.email_outlined),
-  //  ),
-  //  ),
-  //  ),
-  //  );
+
 

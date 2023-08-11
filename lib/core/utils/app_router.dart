@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:qizz_app/home_page.dart';
-import 'package:qizz_app/login_screen.dart';
+import 'package:qizz_app/home_page_view.dart';
+import 'package:qizz_app/login_screen_view.dart';
 
 // GoRouter configuration
 abstract class AppRouter
@@ -12,11 +12,11 @@ abstract class AppRouter
     routes: [
       GoRoute(
         path: '/',
-        builder: (context, state) => MyHomePage(),
+        builder: (context, state) => const HomeView(),
       ),
       GoRoute(
         path: kLoginScreen,
-        builder: (context, state) =>  LoginScreen(),
+        builder: (context, state) =>  const LoginScreenView(),
       ),
     ],
   );
