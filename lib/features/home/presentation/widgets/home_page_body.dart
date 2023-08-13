@@ -15,7 +15,7 @@ class MyHomePageBody extends StatelessWidget {
 
           alignment: Alignment.bottomCenter,
             children: [
-              Container(
+              SizedBox(
                 height:MediaQuery.of(context).size.height,
                 width: double.infinity,
                 child: Image.asset(
