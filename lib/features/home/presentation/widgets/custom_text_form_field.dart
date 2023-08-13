@@ -5,7 +5,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final Function(String?)? onSubmit;
   final Function()? suffixPressed;
-  final String? Function(String?)? validate;
+  final String? Function(String?) validate;
   final String? text;
   final IconData? prefixIcon;
   final IconData? suffixIcon;
@@ -15,7 +15,7 @@ class CustomTextFormField extends StatelessWidget {
     Key? key,
     required this.type,
     this.onSubmit,
-    this.validate,
+    required this.validate,
     required this.text,
     required this.controller,
     this.prefixIcon,

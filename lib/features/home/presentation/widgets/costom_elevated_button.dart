@@ -11,11 +11,11 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return  ElevatedButton(
       onPressed: () {
-        if (formKey.currentState?.validate() ?? false) {
+        if (formKey.currentState?.validate() ?? true) {
           print(emailController.text);
           print(passwordController.text);
+          GoRouter.of(context).push(AppRouter.kCategoryScreen);
         }
-        GoRouter.of(context).push(AppRouter.kCategoryScreen);
 
       },
       style: ElevatedButton.styleFrom(
