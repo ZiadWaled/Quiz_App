@@ -2,19 +2,18 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qizz_app/core/utils/app_router.dart';
+import 'package:qizz_app/features/home/presentation/widgets/login_screen_body.dart';
 class CustomElevatedButton extends StatelessWidget {
-   CustomElevatedButton({super.key});
-  var emailController =TextEditingController();
-  var passwordController =TextEditingController();
-  var formKey =GlobalKey<FormState>();
+   const CustomElevatedButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return  ElevatedButton(
       onPressed: () {
-        if (formKey.currentState?.validate() ?? true) {
-          print(emailController.text);
-          print(passwordController.text);
-          GoRouter.of(context).push(AppRouter.kCategoryScreen);
+        if (LoginScreenBody.formKey.currentState!.validate()) {
+          print('Username is valid: ${LoginScreenBody.emailController.text}');
+          print('Password is valid: ${LoginScreenBody.passwordController.text}');
+          GoRouter.of(context).go(AppRouter.kCategoryScreen);
         }
 
       },

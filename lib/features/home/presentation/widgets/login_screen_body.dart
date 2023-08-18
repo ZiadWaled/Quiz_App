@@ -13,9 +13,9 @@ import 'package:qizz_app/features/home/presentation/widgets/custom_touch_id.dart
 class LoginScreenBody extends StatelessWidget {
   LoginScreenBody({super.key});
 
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
-  var formKey = GlobalKey<FormState>();
+  static var emailController = TextEditingController();
+  static var passwordController = TextEditingController();
+  static var formKey = GlobalKey<FormState>();
   bool isPassword = true;
   @override
   Widget build(BuildContext context) {
@@ -25,8 +25,6 @@ class LoginScreenBody extends StatelessWidget {
         backgroundColor: Colors.green,
         body: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
                   height: MediaQuery.of(context).size.height *1/ 3,
@@ -70,17 +68,26 @@ class LoginScreenBody extends StatelessWidget {
                             text: 'User name',
                             controller: emailController,
                             prefixIcon: FontAwesomeIcons.userAlt,
+                            validate: (value) {
+                              if (value!.isEmpty) {
+                                return 'Username should be not empty';
+                              }
 
-                          validate: (value) {
-                            if(value!.isEmpty){
-                              return 'you must ';
+                              if (value!.length < 8) {
+                                return 'Username should be more than 8 characters';
+                              }
+                              if (value[0] != value[0].toUpperCase()) {
+                                return 'Username should start with an uppercase letter';
+                              }
+                              if (!RegExp(r"@\w+\.com").hasMatch(value)) {
+                                return 'You must enter a word containing "@.com"';
+                              }
+                              return null;
                             }
-                            return null;
-                          },
                         ),
                       ),
                       const SizedBox(
-                        height: 3,
+                        height: 5,
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height *.5/6,
@@ -93,10 +100,19 @@ class LoginScreenBody extends StatelessWidget {
                             prefixIcon: FontAwesomeIcons.lock,
                             suffixIcon: FontAwesomeIcons.eyeSlash,
                           validate: (value) {
-                              if(value!.isEmpty){
-                                return 'you must ';
-                              }
-                              return null;
+                            if (value!.isEmpty) {
+                              return 'Password should be not empty';
+                            }
+
+                            if (value!.length <= 9) {
+                              return 'The text must contain more than 9 characters';
+                            }
+
+                            if (!RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{9,}$').hasMatch(value)) {
+                              return 'The text must contain an uppercase letter,\n a lowercase letter, a special character, and a number';
+                            }
+
+                            return null;
                           },
 
                         ),
@@ -110,7 +126,7 @@ class LoginScreenBody extends StatelessWidget {
                       ),
                       SizedBox(
                         height: MediaQuery.of(context).size.height *.350/6,
-                        child: CustomElevatedButton(),
+                        child: const CustomElevatedButton(),
                       ),
                       const SizedBox(
                         height: 15,
@@ -120,7 +136,7 @@ class LoginScreenBody extends StatelessWidget {
                         child: const CustomTouchId(),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height *.25/6,
+                        height: MediaQuery.of(context).size.height *.20/6,
                         child: CustomRememberMe(),
                       ),
                     ],

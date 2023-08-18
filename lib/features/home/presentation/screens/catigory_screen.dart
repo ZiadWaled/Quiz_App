@@ -13,7 +13,7 @@ class CategoryScreen extends StatelessWidget {
           GestureDetector(
             onTap: (){
               GoRouter.of(context).push(AppRouter.kQuizScreen);
-
+              GoRouter.of(context).pop(AppRouter.kLoginScreen);
             },
             child: Container(
               color: Colors.white,
