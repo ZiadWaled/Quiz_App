@@ -2,38 +2,46 @@
 
 import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qizz_app/core/utils/size_config.dart';
 import 'package:qizz_app/features/home/presentation/widgets/costom_elevated_button.dart';
 import 'package:qizz_app/features/home/presentation/widgets/custom_register.dart';
 import 'package:qizz_app/features/home/presentation/widgets/custom_remember_me.dart';
 import 'package:qizz_app/features/home/presentation/widgets/custom_text_form_field.dart';
 import 'package:qizz_app/features/home/presentation/widgets/custom_touch_id.dart';
+import 'package:qizz_app/model/cubit/cubit.dart';
+import 'package:qizz_app/model/cubit/states.dart';
 
 // ignore: must_be_immutable
 class LoginScreenBody extends StatelessWidget {
-  LoginScreenBody({super.key});
+  const LoginScreenBody({super.key});
 
   static var emailController = TextEditingController();
   static var passwordController = TextEditingController();
   static var formKey = GlobalKey<FormState>();
-  bool isPassword = true;
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Scaffold(
-        backgroundColor: Colors.green,
-        body: SingleChildScrollView(
+
+    return BlocProvider(
+      create: (context) => ToggleCubit(), // Pass the required argument
+      child: BlocConsumer< ToggleCubit,ToggleStates>(
+  listener: (context, state) {},
+  builder: (context, state) {
+    return Scaffold(
+      backgroundColor: Colors.green,
+      body: SingleChildScrollView(
+        child: Form(
+          key:formKey ,
           child: Column(
             children: [
               SizedBox(
-                  height: MediaQuery.of(context).size.height *1/ 3,
+                  height: MediaQuery.of(context).size.height /2.7,
                   width: double.infinity,
                   child: Image.asset(
                     'assets/images/My project-1 (2).png',
-                  )),
+                  ),
+              ),
               Container(
-                height: MediaQuery.of(context).size.height *  2 / 3,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadiusDirectional.only(
                     topStart: Radius.circular(50),
@@ -61,7 +69,6 @@ class LoginScreenBody extends StatelessWidget {
                         height: 20,
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height *.5/6,
                         width: SizeConfig.screenWidth! / 1.3,
                         child: CustomTextFormField(
                             type: TextInputType.emailAddress,
@@ -90,25 +97,28 @@ class LoginScreenBody extends StatelessWidget {
                         height: 5,
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height *.5/6,
                         width: SizeConfig.screenWidth! / 1.3,
                         child: CustomTextFormField(
                             type: TextInputType.visiblePassword,
                             text: 'Password',
-                            isPassword: isPassword,
+                            isPassword:  ToggleCubit.get(context).isPassword,
                             controller: passwordController,
                             prefixIcon: FontAwesomeIcons.lock,
-                            suffixIcon: FontAwesomeIcons.eyeSlash,
+                            suffixIcon: ToggleCubit.get(context).isPassword? FontAwesomeIcons.eyeSlash:FontAwesomeIcons.eye,
+                          suffixPressed: (){
+                            ToggleCubit.get(context).ChangeIsPassword();
+                          },
+
                           validate: (value) {
                             if (value!.isEmpty) {
                               return 'Password should be not empty';
                             }
 
-                            if (value!.length <= 9) {
+                            if (value.length <= 9) {
                               return 'The text must contain more than 9 characters';
                             }
 
-                            if (!RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{9,}$').hasMatch(value)) {
+                            if (!RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$&*~]).{9,}$').hasMatch(value)) {
                               return 'The text must contain an uppercase letter,\n a lowercase letter, a special character, and a number';
                             }
 
@@ -136,7 +146,7 @@ class LoginScreenBody extends StatelessWidget {
                         child: const CustomTouchId(),
                       ),
                       SizedBox(
-                        height: MediaQuery.of(context).size.height *.20/6,
+                        height: MediaQuery.of(context).size.height *.25/6,
                         child: CustomRememberMe(),
                       ),
                     ],
@@ -148,5 +158,8 @@ class LoginScreenBody extends StatelessWidget {
         ),
       ),
     );
+  },
+),
+);
   }
 }

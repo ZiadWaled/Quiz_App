@@ -1,42 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:qizz_app/core/utils/app_router.dart';
+import 'package:flutter/services.dart';
+import 'package:qizz_app/features/home/presentation/widgets/custom_category_countainer.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+  CategoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          GestureDetector(
-            onTap: (){
-              GoRouter.of(context).push(AppRouter.kQuizScreen);
-              GoRouter.of(context).pop(AppRouter.kLoginScreen);
+    return WillPopScope(
+        onWillPop: () async {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Exit App"),
+                content: Text("Do you want to exit the app?"),
+                actions: [
+                  TextButton(
+                    child: Text("No"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  TextButton(
+                    child: Text("Yes"),
+                    onPressed: () {
+                      SystemNavigator.pop();
+                    },
+                  ),
+                ],
+              );
             },
-            child: Container(
-              color: Colors.white,
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height/3,
-              child: const Center(child: Text('الاختبار الاول')),
-            ),
+          );
+          return false;
+        },
+        child: Scaffold(
+          body: Column(
+            children: [
+              for (int i = 0; i < 6; i++)
+                CategoryContainer(
+                  index: i,
+                )
+            ],
           ),
-          Container(
-            color: Colors.blueAccent,
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height/3,
-            child: const Center(child: Text('الاختبار الثاني')),
-          ),
-          Container(
-            color: Colors.green,
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height/3,
-            child: const Center(child: Text('الاختبار الثالث')),
-          ),
-
-        ],
-      ),
-    );
+        ));
   }
 }

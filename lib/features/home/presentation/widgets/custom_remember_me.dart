@@ -17,7 +17,7 @@ class CustomRememberMe extends StatelessWidget {
         ),
         const Text('Remember me',
           style: TextStyle(
-              fontSize: 13
+              fontSize: 14
           ),
         ),
         const Spacer(),
@@ -26,7 +26,7 @@ class CustomRememberMe extends StatelessWidget {
               'Forget Password?',
               style: TextStyle(
                   color: Colors.green,
-                fontSize: 13
+                fontSize: 14
               ),
             )
         ),

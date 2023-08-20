@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:qizz_app/core/utils/app_router.dart';
+import 'package:qizz_app/features/home/presentation/screens/catigory_screen.dart';
 import 'package:qizz_app/features/home/presentation/widgets/login_screen_body.dart';
 class CustomElevatedButton extends StatelessWidget {
    const CustomElevatedButton({super.key});
@@ -13,7 +14,10 @@ class CustomElevatedButton extends StatelessWidget {
         if (LoginScreenBody.formKey.currentState!.validate()) {
           print('Username is valid: ${LoginScreenBody.emailController.text}');
           print('Password is valid: ${LoginScreenBody.passwordController.text}');
-          GoRouter.of(context).go(AppRouter.kCategoryScreen);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => CategoryScreen()),
+          );
         }
 
       },

@@ -1,63 +1,70 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:qizz_app/features/home/presentation/screens/home_page_view.dart';
-import 'package:qizz_app/features/home/presentation/screens/quiz_screen.dart';
+import 'package:qizz_app/features/home/presentation/widgets/login_screen_body.dart';
 
-import '../../../../core/utils/app_router.dart';
+class resultScreen extends StatefulWidget {
+  final int totalScore;
+  final int totalNumOfQuistion;
+  resultScreen(
+      {Key? key, required this.totalScore, required this.totalNumOfQuistion})
+      : super(key: key);
 
-class ResultScreen extends StatelessWidget {
-   const ResultScreen({super.key, required this.score});
-  final int score;
+  @override
+  State<resultScreen> createState() => _resultScreenState();
+}
+
+class _resultScreenState extends State<resultScreen> {
+  @override
+  void dispose() {
+    LoginScreenBody.emailController.dispose();
+    LoginScreenBody.passwordController.dispose();
+    LoginScreenBody.emailController=TextEditingController();
+    LoginScreenBody.passwordController=TextEditingController();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-
-          TextButton(
-              onPressed: () {},
-              child: const Text(
-                "Ziad",
-                style: TextStyle(
-                  fontSize: 50,
-                ),
-              )),
-           Center(
-            child: Text(
-              'Congratulation you scored  $score/1',
-              style: const TextStyle(
-                fontSize: 25,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 150,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.green,
-              ),
-              child: GestureDetector(
-                child: const Text(
-                  'play again',
-                  style: TextStyle(
-                    fontSize: 50,
+          Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Hello , ",
+                      style: TextStyle(
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Dancing Script")),
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "${LoginScreenBody.emailController.text}",
+                      style: const TextStyle(fontSize: 18),
+                    ),
                   ),
-                ),
-                onTap: () {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomeView()),
-                        (Route<dynamic> route) => false, // Remove all previous routes
-                  );
-                },
+                ],
               ),
+              Text(
+                "Your Score is ${widget.totalScore}/${widget.totalNumOfQuistion}",
+                style: const TextStyle(
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Dancing Script"),
+              ),
+            ],
+          ),
+          TextButton(
+            style: ButtonStyle(
+              backgroundColor:
+              MaterialStateProperty.all<Color>(const Color.fromARGB(255, 130, 11, 84)),
             ),
+            onPressed: () {
+              Navigator.of(context).popUntil((r) => r.isFirst);
+            },
+            child: const Text("Reset quiz"),
           ),
         ],
       ),

@@ -1,8 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:qizz_app/features/home/presentation/screens/catigory_screen.dart';
 import 'package:qizz_app/features/home/presentation/widgets/home_page_body.dart';
-import 'package:qizz_app/features/home/presentation/screens/quiz_screen.dart';
-import 'package:qizz_app/features/home/presentation/screens/result_screen.dart';
+
 import 'package:qizz_app/views/splash_screen_view.dart';
 
 import '../../features/home/presentation/screens/login_screen_view.dart';
@@ -19,14 +18,14 @@ abstract class AppRouter
   static final router = GoRouter(
 
     routes: [
-      GoRoute(
-        path:kCategoryScreen,
-        builder: (context, state) => const CategoryScreen(),
-      ),
-      GoRoute(
-        path:kQuizScreen,
-        builder: (context, state) =>   QuizScreen(),
-      ),
+      // GoRoute(
+      //   path:kCategoryScreen,
+      //   builder: (context, state) =>  CategoryScreen(),
+      // ),
+      // GoRoute(
+      //   path:kQuizScreen,
+      //   builder: (context, state) =>   QuizScreen(categoryMap: {},),
+      // ),
       // GoRoute(
       //   path:kResultScreen,
       //   builder: (context, state) =>   ResultScreen(),

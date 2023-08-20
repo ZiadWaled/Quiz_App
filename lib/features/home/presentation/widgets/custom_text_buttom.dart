@@ -11,8 +11,8 @@ class CustomTextButton extends StatelessWidget {
     return ElevatedButton(
       onPressed:onPressed ,
       style: ElevatedButton.styleFrom(
-        primary: Colors.green, // Background color
-        onPrimary: Colors.white, // Text color
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.green, // Text color
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
