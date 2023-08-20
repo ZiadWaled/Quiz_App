@@ -56,15 +56,24 @@ class _resultScreenState extends State<resultScreen> {
               ),
             ],
           ),
-          TextButton(
-            style: ButtonStyle(
-              backgroundColor:
-              MaterialStateProperty.all<Color>(const Color.fromARGB(255, 130, 11, 84)),
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.green,
+              borderRadius: BorderRadius.circular(20),
             ),
-            onPressed: () {
-              Navigator.of(context).popUntil((r) => r.isFirst);
-            },
-            child: const Text("Reset quiz"),
+            child: TextButton(
+
+              onPressed: () {
+                Navigator.of(context).popUntil((r) => r.isFirst);
+              },
+              child: const Text(
+                  "Play again ",
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.white
+                ),
+              ),
+            ),
           ),
         ],
       ),
