@@ -81,7 +81,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute<void>(
-                              builder: (BuildContext context) => resultScreen(
+                              builder: (BuildContext context) => ResultScreen(
                                 totalScore: totalScore,
                                 totalNumOfQuistion:  index + 1,
                               ),
