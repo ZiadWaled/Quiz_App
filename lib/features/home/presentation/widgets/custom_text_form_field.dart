@@ -28,44 +28,43 @@ class CustomTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
-      child: Container(
-        // height: MediaQuery.of(context).size.height *.5/6,
-        child: TextFormField(
-          keyboardType: type,
-          onFieldSubmitted: onSubmit,
-          controller: controller,
-          obscureText: isPassword,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: TextFormField(
+        keyboardType: type,
+        onFieldSubmitted: onSubmit,
+        controller: controller,
+        obscureText: isPassword,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
 
-          decoration: InputDecoration(
-          contentPadding:
-          const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-            filled: true,
-            fillColor: Colors.white,
-            labelText: text,
-            prefixIcon: prefixIcon != null
-                ? Icon(
-              prefixIcon,
-              semanticLabel: 'Prefix Icon',
-            )
-                : null,
-            suffixIcon: suffixIcon != null
-                ? IconButton(
-              onPressed: suffixPressed,
-              icon: IconButton(
-                icon: Icon(
-                  suffixIcon,
-                  semanticLabel: 'Suffix Icon',
-                ), onPressed: suffixPressed,
-              ),
-            )
-                : null,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(40.0),
+        decoration: InputDecoration(
+        contentPadding:
+        const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+          filled: true,
+          fillColor: Colors.white,
+          labelText: text,
+          prefixIcon: prefixIcon != null
+              ? Icon(
+            size: 18,
+            prefixIcon,
+            semanticLabel: 'Prefix Icon',
+          )
+              : null,
+          suffixIcon: suffixIcon != null
+              ? IconButton(
+            onPressed: suffixPressed,
+            icon: IconButton(
+              icon: Icon(
+                size: 17,
+                suffixIcon,
+                semanticLabel: 'Suffix Icon',
+              ), onPressed: suffixPressed,
             ),
+          )
+              : null,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(40.0),
           ),
-          validator: validate,
         ),
+        validator: validate,
       ),
     );
   }

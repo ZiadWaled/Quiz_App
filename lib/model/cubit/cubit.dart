@@ -11,6 +11,7 @@ class ToggleCubit extends Cubit<ToggleStates>
 
   static ToggleCubit get(context) =>BlocProvider.of(context);
    void ChangeIsPassword(){
+
      isPassword=!isPassword;
      emit(ChangeState());
    }

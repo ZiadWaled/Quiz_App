@@ -35,7 +35,7 @@ class LoginScreenBody extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                  height: MediaQuery.of(context).size.height /2.7,
+                  height: MediaQuery.of(context).size.height /2.83,
                   width: double.infinity,
                   child: Image.asset(
                     'assets/images/My project-1 (2).png',
