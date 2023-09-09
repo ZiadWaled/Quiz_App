@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print, must_be_immutable
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:qizz_app/core/utils/app_router.dart';
 import 'package:qizz_app/features/home/presentation/screens/catigory_screen.dart';
 import 'package:qizz_app/features/home/presentation/widgets/login_screen_body.dart';

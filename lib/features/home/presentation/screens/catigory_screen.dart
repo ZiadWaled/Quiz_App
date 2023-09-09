@@ -13,17 +13,17 @@ class CategoryScreen extends StatelessWidget {
             context: context,
             builder: (BuildContext context) {
               return AlertDialog(
-                title: Text("Exit App"),
-                content: Text("Do you want to exit the app?"),
+                title: const Text("Exit App"),
+                content: const Text("Do you want to exit the app?"),
                 actions: [
                   TextButton(
-                    child: Text("No"),
+                    child: const Text("No"),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
                   ),
                   TextButton(
-                    child: Text("Yes"),
+                    child: const Text("Yes"),
                     onPressed: () {
                       SystemNavigator.pop();
                     },

@@ -10,17 +10,17 @@ class CategoryContainer extends StatelessWidget {
     "sport quiz",
     "IQ quiz",
     "history quiz",
-    "IQ quiz",
-    "history quiz",
-    "sport quiz"
+    "Programming quiz",
+    "Math quiz",
+    "English quiz"
   ];
   List quizzColor = [
     Colors.blue,
     Colors.green,
     Colors.red,
     Colors.yellow,
-    Colors.grey,
-    Color.fromARGB(255, 199, 13, 155),
+    Colors.brown,
+    const Color.fromARGB(255, 199, 13, 155),
   ];
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class CategoryContainer extends StatelessWidget {
               child: Center(
                 child: Text(
                   quizzText[index!],
-                  style: TextStyle(fontSize: 34),
+                  style: const TextStyle(fontSize: 34),
                 ),
               )),
         ),

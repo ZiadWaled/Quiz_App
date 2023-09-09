@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:qizz_app/features/home/presentation/widgets/login_screen_body.dart';
 
@@ -42,55 +41,72 @@ class _ResultScreenState extends State<ResultScreen> {
                     onPressed: () {},
                     child: Text(
                       LoginScreenBody.emailController.text,
-                      style: const TextStyle(fontSize: 18),
+                      style: const TextStyle(
+                        fontSize: 26,
+                      ),
                     ),
                   ),
                 ],
               ),
-              Text(
-                "Your Score is ${widget.totalScore}/${widget.totalNumOfQuistion}",
-                style: const TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: "Dancing Script"),
-              ),
+              SizedBox(height: MediaQuery.of(context).size.height/30,),
+              RichText(
+                text: TextSpan(
+                  style: DefaultTextStyle.of(context).style,
+                  children: <TextSpan>[
+                    const TextSpan(
+                      text: "Your Score is ",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontFamily: "Dancing Script",
+                      ),
+                    ),
+                    TextSpan(
+                      text: "${widget.totalScore}",
+                      style: const TextStyle(
+                        color: Colors.red,
+                        fontSize: 26,
+                      ),
+                    ),
+                    TextSpan(
+                      text: "/${widget.totalNumOfQuistion}",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 26,
+                      ),
+                    ),
+
+
+                  ],
+                ),
+              )
+
             ],
           ),
-          AnimatedContainer(
-            duration: Duration(milliseconds: 500),
-            curve: Curves.easeInOut, // إضافة منحنى التكيف للانتقال
-            decoration: BoxDecoration(
-              color: Colors.green,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
-                  blurRadius: 5,
-                  offset: Offset(0, 2),
-                ),
-              ],
-            ),
-            child: TextButton(
-              onPressed: () {
-                Navigator.of(context).popUntil((r) => r.isFirst);
-              },
-              child: AnimatedTextKit(
-                animatedTexts: [
-                  FadeAnimatedText(
-                    "Play again",
-                    textStyle: TextStyle(
-                      fontSize: 30,
-                      color: Colors.white,
-                    ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).popUntil((r) => r.isFirst);
+            },
+            child:
 
+                Container(
+                  height: MediaQuery.of(context).size.height/11,
+                  width: MediaQuery.of(context).size.width/2.2,
+                   decoration: BoxDecoration(
+                     color: Colors.green,
+                     borderRadius: BorderRadius.circular(30)
+                   ),
+                  child: const Center(
+                    child: Text(
+                      "Play again",
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,
+                      ),
+            ),
                   ),
-                ],
-                totalRepeatCount: 30,
-                pause: const Duration(milliseconds: 1000),
-                displayFullTextOnTap: true,
-
-              ),
-            ),
+                ),
           ),
         ],
       ),
